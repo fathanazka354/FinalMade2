@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+apply from: '../shared_depedencies.gradle'
+android {
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.fathan.madegithub"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        buildConfigField("String","API_KEY",'"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"')
+        buildConfigField("String","BASE_URL",'"https://api.github.com"')
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+    dynamicFeatures = [':favorite']
+}
+
+dependencies {
+
+    implementation project(":core2")
+    implementation fileTree(dir: 'libs', includes: ['*.jar'])
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
+}
