@@ -30,6 +30,7 @@ class HomeFragment : Fragment(), ShowStateFragment {
     private lateinit var menuItem: MenuItem
     private lateinit var searchView: SearchView
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -68,6 +69,7 @@ class HomeFragment : Fragment(), ShowStateFragment {
                         onSuccessState(homeBinding)
 
                         it.data?.apply {
+                            Log.d("HomeFragment", "observeData: $this")
                             homeAdapter.setList(this)
                         }
                     }
@@ -93,6 +95,8 @@ class HomeFragment : Fragment(), ShowStateFragment {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 progressBar.setProgress(100, false)
             }
+            Log.d("HomeFragment", "BISA")
+
             rvUser.visibility = View.VISIBLE
             resources
         }

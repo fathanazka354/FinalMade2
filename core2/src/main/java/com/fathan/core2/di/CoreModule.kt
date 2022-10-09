@@ -8,6 +8,8 @@ import com.fathan.core2.data.source.local.room.UserDatabase
 import com.fathan.core2.data.source.remote.RemoteDataSource
 import com.fathan.core2.data.source.remote.network.ApiService
 import com.fathan.core2.domain.repository.IUserRepository
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
@@ -25,10 +27,12 @@ val databaseModule = module {
         get<UserDatabase>().userDao()
     }
     single {
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("fathan".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             UserDatabase::class.java, "User.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration().openHelperFactory(factory).build()
     }
 }
 
