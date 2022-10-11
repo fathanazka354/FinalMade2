@@ -24,7 +24,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 @Suppress("DEPRECATION")
 class HomeFragment : Fragment(), ShowStateFragment {
-    private lateinit var homeBinding: FragmentHomeBinding
+    private var _homeBinding: FragmentHomeBinding? = null
+    private val homeBinding get() = _homeBinding!!
     private lateinit var homeAdapter: UserAdapter
     private val homeViewModel: HomeViewModel by viewModel()
     private lateinit var menuItem: MenuItem
@@ -38,7 +39,7 @@ class HomeFragment : Fragment(), ShowStateFragment {
     ): View {
         val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.title = getString(R.string.home)
-        homeBinding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        _homeBinding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         return homeBinding.root
     }
 
@@ -108,7 +109,7 @@ class HomeFragment : Fragment(), ShowStateFragment {
         favoriteBinding: FragmentFavoriteBinding?
     ) {
         homeBinding?.apply {
-            errorLayout.errorFragment.visibility = View.GONE
+//            errorLayout.err.visibility = View.GONE
             progressBar.visibility = View.VISIBLE
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 progressBar.setProgress(100, true)
@@ -167,4 +168,8 @@ class HomeFragment : Fragment(), ShowStateFragment {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    override fun onDestroyView() {
+        _homeBinding = null
+        super.onDestroyView()
+    }
 }

@@ -10,6 +10,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fathan.core2.ui.UserAdapter
+import com.fathan.favorite.di.viewModelModule
 import com.fathan.madegithub.R
 import com.fathan.madegithub.databinding.FragmentFavoriteBinding
 import com.fathan.madegithub.databinding.FragmentFollowBinding
@@ -32,7 +33,7 @@ class FavoriteFragment : Fragment(), ShowStateFragment {
         val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.title = getString(R.string.favorite)
         favoriteBinding = FragmentFavoriteBinding.inflate(layoutInflater)
-        loadKoinModules(com.fathan.favorite.di.viewModelModule)
+        loadKoinModules(viewModelModule)
         return favoriteBinding.root
     }
 
