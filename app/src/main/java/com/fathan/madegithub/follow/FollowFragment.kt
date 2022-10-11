@@ -31,7 +31,8 @@ class FollowFragment : Fragment(), ShowStateFragment {
         private const val TYPE = "type"
     }
 
-    private lateinit var followBinding: FragmentFollowBinding
+    private var _followBinding: FragmentFollowBinding? = null
+    private val followBinding get() = _followBinding!!
     private lateinit var followAdapter: UserAdapter
     private lateinit var username: String
     private var type: String? = null
@@ -51,7 +52,7 @@ class FollowFragment : Fragment(), ShowStateFragment {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        followBinding = FragmentFollowBinding.inflate(layoutInflater, container, false)
+        _followBinding = FragmentFollowBinding.inflate(layoutInflater, container, false)
         return followBinding.root
     }
 
@@ -140,6 +141,12 @@ class FollowFragment : Fragment(), ShowStateFragment {
             }
             recyclerFollow.visibility = View.GONE
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _followBinding = null
+        followBinding.recyclerFollow.adapter = null
     }
 
 }

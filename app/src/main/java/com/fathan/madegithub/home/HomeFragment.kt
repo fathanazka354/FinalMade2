@@ -109,7 +109,7 @@ class HomeFragment : Fragment(), ShowStateFragment {
         favoriteBinding: FragmentFavoriteBinding?
     ) {
         homeBinding?.apply {
-//            errorLayout.err.visibility = View.GONE
+            errorLayout.errorFragment.visibility = View.GONE
             progressBar.visibility = View.VISIBLE
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 progressBar.setProgress(100, true)
@@ -169,7 +169,13 @@ class HomeFragment : Fragment(), ShowStateFragment {
     }
 
     override fun onDestroyView() {
-        _homeBinding = null
         super.onDestroyView()
+        _homeBinding = null
     }
+
+    override fun onStop() {
+        homeBinding.rvUser.adapter = null
+        super.onStop()
+    }
+
 }

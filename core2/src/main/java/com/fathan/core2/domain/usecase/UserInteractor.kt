@@ -3,6 +3,7 @@ package com.fathan.core2.domain.usecase
 import com.fathan.core2.data.Resource
 import com.fathan.core2.domain.model.User
 import com.fathan.core2.domain.repository.IUserRepository
+import com.fathan.core2.utils.SettingPreferences
 import kotlinx.coroutines.flow.Flow
 
 class UserInteractor(private val userRepository: IUserRepository):UserUseCase {

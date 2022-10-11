@@ -45,6 +45,7 @@ buildscript {
 
     //Dependency Injection
     ext.koin_version = '3.2.2'
+    ext.lottie_version = "3.4.1"
     repositories {
         google()
         mavenCentral()

@@ -5,7 +5,8 @@ import com.fathan.core2.data.Resource
 import com.fathan.core2.domain.model.User
 import com.fathan.core2.domain.usecase.UserUseCase
 
-class HomeViewModel(private val userUseCase: UserUseCase):ViewModel() {
+class HomeViewModel(private val userUseCase: UserUseCase)
+    :ViewModel() {
     private var username: MutableLiveData<String> = MutableLiveData()
 
     fun setSearch(query: String){

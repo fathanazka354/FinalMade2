@@ -17,4 +17,6 @@
     <string name="favorite_remove">%s Berhasil Dihapus</string>
     <string name="followin">@{String.valueOf(data.following)} Following</string>
     <string name="title_favorite">Favorite</string>
+
+    <string name="dark_mode">Dark Mode</string>
 </resources>

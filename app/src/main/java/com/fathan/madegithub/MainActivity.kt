@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -50,11 +53,9 @@ class MainActivity : AppCompatActivity() {
                 when (intent.action) {
                     Intent.ACTION_POWER_CONNECTED -> {
                         Toast.makeText(this@MainActivity, "Power Connected", Toast.LENGTH_SHORT).show()
-//                        tv_power_status.text = getString(R.string.power_connected)
                     }
                     Intent.ACTION_POWER_DISCONNECTED -> {
                         Toast.makeText(this@MainActivity, "Power Disconnected", Toast.LENGTH_SHORT).show()
-//                        tv_power_status.text = getString(R.string.power_disconnected)
                     }
                 }
             }

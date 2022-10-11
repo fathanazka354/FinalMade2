@@ -1,5 +1,6 @@
 package com.fathan.madegithub.detail
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,7 +20,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailFragment : Fragment() {
 
-    private lateinit var detailBinding: FragmentDetailBinding
+    private var _detailBinding: FragmentDetailBinding? = null
+    private val detailBinding get() = _detailBinding!!
     private lateinit var pagerAdapter: PagerAdapter
     private lateinit var user: User
     private var isFavorite = false
@@ -33,7 +35,7 @@ class DetailFragment : Fragment() {
     ): View {
         val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.title = args.username
-        detailBinding = FragmentDetailBinding.inflate(layoutInflater, container,false)
+        _detailBinding = FragmentDetailBinding.inflate(layoutInflater, container,false)
         detailBinding.lifecycleOwner = viewLifecycleOwner
         observeDetail()
         return detailBinding.root
@@ -100,6 +102,7 @@ class DetailFragment : Fragment() {
         }
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun changedFavorite(state: Boolean){
         if (state){
             detailBinding.fabFavorite.setImageDrawable(resources.getDrawable(R.drawable.ic_favorite))
@@ -108,17 +111,22 @@ class DetailFragment : Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _detailBinding = null
+    }
+
     inner class PagerAdapter(
         private val tabList: Array<String>,
         private val username: String,
         fragment: Fragment
     ):FragmentStateAdapter(fragment){
-    override fun getItemCount(): Int {
-        return tabList.size
-    }
+        override fun getItemCount(): Int {
+            return tabList.size
+        }
 
-    override fun createFragment(position: Int): Fragment {
-        return FollowFragment.newInstance(username,tabList[position])
+        override fun createFragment(position: Int): Fragment {
+            return FollowFragment.newInstance(username,tabList[position])
+        }
     }
-}
 }
