@@ -32,10 +32,12 @@ class SettingFragment : Fragment() {
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 settingBinding.switchTheme.isChecked = true
+                settingBinding.tvContentTheme.text = "Dark Mode"
 //                bottomNavigationView.setBackgroundColor(resources.getColor(com.fathan.madegithub.R.color.black))
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 settingBinding.switchTheme.isChecked = false
+                settingBinding.tvContentTheme.text = "Light Mode"
 //                bottomNavigationView.setBackgroundColor(resources.getColor(com.fathan.madegithub.R.color.white))
             }
         }

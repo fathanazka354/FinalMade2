@@ -10,23 +10,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/switch_theme"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_content_theme"
+        app:layout_constraintEnd_toStartOf="@+id/tv_content_theme"
         app:layout_constraintHorizontal_bias="0.681"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="@+id/tv_content_theme" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_content_theme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:text="Sorry Screen still develop"
+        android:layout_marginEnd="104dp"
+        android:text="Dark Mode"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.512"
+        app:layout_constraintVertical_bias="0.523"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
